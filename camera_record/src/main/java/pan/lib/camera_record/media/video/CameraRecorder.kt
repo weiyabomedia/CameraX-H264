@@ -77,8 +77,8 @@ class CameraRecorder(
         val rotation = cameraPreviewInterface.getPreviewView().display.rotation
         val resolutionSelector = ResolutionSelector.Builder().setResolutionStrategy(
             ResolutionStrategy(
-                Size(720, 1080),
-                ResolutionStrategy.FALLBACK_RULE_CLOSEST_LOWER
+                Size(720, 1280),
+                ResolutionStrategy.FALLBACK_RULE_NONE
             )
         ).build()
 
