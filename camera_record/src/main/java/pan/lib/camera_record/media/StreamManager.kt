@@ -40,8 +40,8 @@ open class StreamManager(
     /**
      * 启动摄像头和音频录制。
      */
-    fun start() {
-        cameraRecorder.startRecording()
+    fun start(width: Int, height: Int) {
+        cameraRecorder.startRecording(width, height)
         audioRecorder.startRecording()
     }
 

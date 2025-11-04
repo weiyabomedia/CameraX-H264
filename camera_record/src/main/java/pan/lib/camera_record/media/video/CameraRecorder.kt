@@ -32,11 +32,11 @@ class CameraRecorder(
 
     private val videoEncoder = VideoEncoder(cameraPreviewInterface)
 
-    fun startRecording() {
+    fun startRecording(width: Int, height: Int) {
         if (isRecording.get()) return // 已经在录制中
 
         isRecording.set(true)
-        startCameraPreview()
+        startCameraPreview(width, height)
     }
 
     fun stopRecording() {
@@ -52,7 +52,7 @@ class CameraRecorder(
         } else {
             CameraSelector.LENS_FACING_FRONT
         }
-        startCameraPreview()
+        //startCameraPreview()
     }
 
     private fun bindPreview(cameraProvider: ProcessCameraProvider, imageAnalysis: ImageAnalysis) {
@@ -73,11 +73,11 @@ class CameraRecorder(
     }
 
     @androidx.annotation.OptIn(ExperimentalGetImage::class)
-    private fun startCameraPreview() {
+    private fun startCameraPreview(width: Int, height: Int) {
         val rotation = cameraPreviewInterface.getPreviewView().display.rotation
         val resolutionSelector = ResolutionSelector.Builder().setResolutionStrategy(
             ResolutionStrategy(
-                Size(720, 1280),
+                Size(width, height),
                 ResolutionStrategy.FALLBACK_RULE_NONE
             )
         ).build()

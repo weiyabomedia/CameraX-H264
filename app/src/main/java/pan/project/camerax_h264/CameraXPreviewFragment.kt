@@ -148,7 +148,7 @@ class CameraXPreviewFragment : Fragment() {
         } else {
             // 权限确认后，启动streamManager
             binding.root.post {
-                streamManager.start()
+                streamManager.start(720, 1280)
             }
         }
     }
@@ -157,7 +157,7 @@ class CameraXPreviewFragment : Fragment() {
         val allGranted = permissions.all { it.value }
         if (allGranted) {
             binding.root.post {
-                streamManager.start()
+                streamManager.start(720, 1280)
             }
         } else {
             val deniedPermissions = permissions.filter { !it.value }.keys.joinToString("\n")
